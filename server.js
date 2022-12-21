@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.use(require('./app/route/userRouter'));
 app.use(require('./app/route/clientRouter'));
+app.use(require('./app/route/roleRouter'));
 
 app.all('*', (req, res) => {
     res.send('404 Not Found');
