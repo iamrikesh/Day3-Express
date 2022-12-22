@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const userController = require('../controller/userController.js');
 
-router.get('/client', userController.list);
-router.post('/client', userController.create);
-router.delete('/client/:id', userController.destroy);
+router.route('/')
+    .get(userController.list)
+    .post(userController.create);
+
+router.delete('/:id', userController.destroy);
 
 module.exports = router;

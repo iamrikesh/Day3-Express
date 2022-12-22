@@ -6,9 +6,13 @@ app.use(express.json());
 
 // require('./route')(app);
 
-app.use(require('./app/route/userRouter'));
-app.use(require('./app/route/clientRouter'));
-app.use(require('./app/route/roleRouter'));
+const logger = require('./app/middleware/logger');
+
+app.use(logger);
+app.use('/user', require('./app/route/userRouter'));
+app.use('/client', require('./app/route/clientRouter'));
+app.use('/role', require('./app/route/roleRouter'));
+
 
 app.all('*', (req, res) => {
     res.send('404 Not Found');
