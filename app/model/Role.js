@@ -18,7 +18,12 @@ module.exports = class Role{
     }
 
     save(){
-        Role.#roleList.push(this.obj);
+        return new Promise((resolve, reject) => {
+            setTimeout(() =>{
+                Role.#roleList.push(this.obj);
+                resolve();
+            },5000);
+        })
     }
 
     static findAll(){

@@ -4,9 +4,9 @@ exports.list = (req, res) => {
     res.json(Role.findAll());
 }
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     const role = new Role(req.body);
-    role.save();
+    await role.save();
     res.json(role);
 }
 
