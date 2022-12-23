@@ -5,9 +5,13 @@ exports.list = (req, res) => {
 }
 
 exports.create = async (req, res) => {
-    const role = new Role(req.body);
-    await role.save();
-    res.json(role);
+    try{
+        const role = new Role(req.body);
+        await role.save();
+        res.json(role);
+    }catch(err){
+        res.send(err);
+    }
 }
 
 exports.destroy = (req, res) => {

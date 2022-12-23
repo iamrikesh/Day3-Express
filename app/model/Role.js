@@ -21,7 +21,7 @@ module.exports = class Role{
         return new Promise((resolve, reject) => {
             setTimeout(() =>{
                 Role.#roleList.push(this.obj);
-                resolve();
+                // reject('failed');
             },5000);
         })
     }
