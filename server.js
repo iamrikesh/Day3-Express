@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
 const PORT = 5000;
+// const URL = "mongodb+srv://oj96cZE2kUNPaBP4:oj96cZE2kUNPaBP4@mern.oyvlr2s.mongodb.net/day3?retryWrites=true&w=majority"
+const URL = "mongodb://localhost:27017/day3";
+
+const mongoose = require('mongoose');
+
+mongoose.connect(URL).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    console.log("Error: ", err.message);
+});
 
 app.use(express.json());
 

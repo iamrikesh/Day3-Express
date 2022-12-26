@@ -1,16 +1,19 @@
-const User = require('../model/User');
+// const User = require('../model/User');
+const User = require('../model/User3');
 
-exports.list = (req, res) => {
-    res.json(User.findAll());
+exports.list = async (req, res) => {
+    const users = await User.find();
+    res.json(users);
 }
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     const user = new User(req.body);
-    user.save();
+    await user.save();
     res.json(user);
 }
 
-exports.destroy = (req, res) => {
-    User.deleteById(req.params.id);
+exports.destroy = async (req, res) => {
+    await User.deleteOne({_id: req.params.id});
+    // User.deleteById(req.params.id);
     res.send("User Deleted");
 }

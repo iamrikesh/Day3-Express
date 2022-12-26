@@ -14,7 +14,10 @@ module.exports = class User{
         }
     ];
 
-    constructor(obj){
+    constructor({name, age}){
+        if(name == undefined || age == undefined)
+            throw "Invalid Data";
+            
         obj.id = uuid();
         this.obj = obj;
     }
